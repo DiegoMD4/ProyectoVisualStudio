@@ -10,10 +10,10 @@ using System.Windows.Forms;
 using System.Data.OracleClient;
 namespace ProjectABD
 {
-    public partial class Duenos : Form
+    public partial class Citas : Form
     {
         OracleConnection ora = new OracleConnection("DATA SOURCE  = xe; PASSWORD = diegomd; USER ID = diego;");
-        public Duenos()
+        public Citas()
         {
             InitializeComponent();
         }
@@ -23,20 +23,23 @@ namespace ProjectABD
             try
             {
                 ora.Open();
+                OracleCommand comando = new OracleCommand("CITAS_PROCEDURE", ora);
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
 
-                OracleCommand dueno = new OracleCommand("INDUENO");
-                dueno.CommandType = System.Data.CommandType.StoredProcedure;
-                dueno.Parameters.Add("dnid", OracleType.Number).Value = Convert.ToInt32(this.textBox1.Text);
-                dueno.Parameters.Add("NDUENO", OracleType.VarChar).Value = this.textBox2.Text;
-                dueno.Parameters.Add("RES", OracleType.VarChar).Value = this.textBox3.Text;
+                comando.Parameters.Add("nompaciente", OracleType.VarChar).Value = this.textBox1.Text;
+                comando.Parameters.Add("nommed", OracleType.VarChar).Value = this.textBox2.Text;
+                comando.Parameters.Add("fech", OracleType.DateTime).Value = this.dateTimePicker1.Text;
+                comando.Parameters.Add("hor", OracleType.DateTime).Value = this.dateTimePicker2.Text;
+                comando.Parameters.Add("descr", OracleType.VarChar).Value = this.textBox3.Text;
+                comando.Parameters.Add("fechpro", OracleType.DateTime).Value = this.dateTimePicker3.Text;
+                comando.Parameters.Add("cir", OracleType.VarChar).Value = this.textBox4.Text;
 
-
-                dueno.ExecuteNonQuery();
+                comando.ExecuteNonQuery();
                 MessageBox.Show("Agregado correctamente");
 
-                OracleCommand abrir = new OracleCommand("SELECTDUENO", ora);
+                OracleCommand abrir = new OracleCommand("SELECTCITAS", ora);
                 abrir.CommandType = System.Data.CommandType.StoredProcedure;
-                abrir.Parameters.Add("du", OracleType.Cursor).Direction = ParameterDirection.Output;
+                abrir.Parameters.Add("cit", OracleType.Cursor).Direction = ParameterDirection.Output;
 
                 OracleDataAdapter adap = new OracleDataAdapter();
                 adap.SelectCommand = abrir;
@@ -47,24 +50,23 @@ namespace ProjectABD
             catch (Exception)
             {
 
-                MessageBox.Show("Error de agregado/ campos vacios");
+                MessageBox.Show("Error o campos vacíos");
             }
             ora.Close();
         }
 
-        private void Duenos_Load(object sender, EventArgs e)
+        private void Citas_Load(object sender, EventArgs e)
         {
             ora.Open();
-            OracleCommand abrir = new OracleCommand("SELECTDUENO", ora);
+            OracleCommand abrir = new OracleCommand("SELECTCITAS", ora);
             abrir.CommandType = System.Data.CommandType.StoredProcedure;
-            abrir.Parameters.Add("du", OracleType.Cursor).Direction = ParameterDirection.Output;
+            abrir.Parameters.Add("cit", OracleType.Cursor).Direction = ParameterDirection.Output;
 
             OracleDataAdapter adap = new OracleDataAdapter();
             adap.SelectCommand = abrir;
             DataTable tabla = new DataTable();
             adap.Fill(tabla);
             dataGridView1.DataSource = tabla;
-
             ora.Close();
         }
     }

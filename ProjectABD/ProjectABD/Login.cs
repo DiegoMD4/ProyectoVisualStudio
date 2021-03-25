@@ -25,14 +25,15 @@ namespace ProjectABD
            
             ora.Open();
             OracleCommand comando = new OracleCommand("SELECT * FROM USUARIO WHERE NOM_USUARIO = :usuario AND CONTRASENA = :clave", ora);
-            comando.Parameters.AddWithValue(":usuario", textBox1.Text);
+            comando.Parameters.AddWithValue(":usuario", usuario.Text);
             comando.Parameters.AddWithValue(":clave", textBox2.Text);
             OracleDataReader lector = comando.ExecuteReader();
-            
+
+            string usu = this.usuario.Text;
 
             if (lector.Read())
             {
-                Inicio ini = new Inicio();
+                Inicio ini = new Inicio(usu);
                 ora.Close();
 
                 ini.Show();

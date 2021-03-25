@@ -19,3 +19,9 @@ C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.
 C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.Pacientes.resources
 C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.Inicio.resources
 C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.Doctores.resources
+C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.Duenos.resources
+C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.Citas.resources
+C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.Medicinas.resources
+C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.Cirugia.resources
+C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.Pantalla_usuarios.resources
+C:\Users\laptop\Desktop\Proyecto ABD\ProjectABD\ProjectABD\obj\Debug\ProjectABD.Raza.resources
